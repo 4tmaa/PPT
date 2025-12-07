@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: url('images/bg10.jpg') center center/cover no-repeat;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 30, 20, 0.7);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 60px 70px;
+            z-index: 2;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(212,175,55,1) 0%, rgba(212,175,55,0) 100%);
+        }
+        .suggestion-container {
+            display: flex;
+            flex-grow: 1;
+            gap: 25px;
+        }
+        .suggestion-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        .card-icon i {
+            font-size: 40px;
+            color: #D4AF37;
+        }
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+        .card-content {
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 1.5;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .highlight {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="overlay">
+            <div class="content">
+                <h1 class="title">Suggestion</h1>
+                
+                <div class="suggestion-container">
+                    <div class="suggestion-card">
+                        <div class="card-icon">
+                            <i class="material-icons">school</i>
+                        </div>
+                        <h2 class="card-title">Teachers</h2>
+                        <div class="card-content">
+                            Use flashcards as <span class="highlight">writing support tool</span>
+                        </div>
+                    </div>
+                    
+                    <div class="suggestion-card">
+                        <div class="card-icon">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <h2 class="card-title">Students</h2>
+                        <div class="card-content">
+                            Use flashcards to <span class="highlight">enrich vocabulary</span> and ideas
+                        </div>
+                    </div>
+                    
+                    <div class="suggestion-card">
+                        <div class="card-icon">
+                            <i class="material-icons">psychology</i>
+                        </div>
+                        <h2 class="card-title">Future Researchers</h2>
+                        <div class="card-content">
+                            Research <span class="highlight">other text types</span> or digital versions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

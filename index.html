@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Maharaja Baginda ATMA</title>
+    <style>
+        /* 1. LAYAR BIOSKOP HITAM */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Latar hitam */
+            font-family: sans-serif;
+            position: relative;
+        }
+
+        /* 2. IFRAME (LAYAR UTAMA) */
+        #main-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* UKURAN ASLI SLIDE ANDA (JANGAN DIUBAH) */
+            width: 1280px; 
+            height: 720px; 
+            border: none;
+            background-color: white; 
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            
+            /* PENTING: Titik tengah untuk zoom */
+            transform-origin: center center; 
+            /* Default transform sebelum JS jalan */
+            transform: translate(-50%, -50%) scale(1);
+            
+            opacity: 0; 
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        /* 3. TOMBOL KONTROL (Gaya sama seperti sebelumnya) */
+        .control-btn {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1); /* Transparan */
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            cursor: pointer;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, background 0.3s ease;
+            opacity: 1;
+        }
+        .control-btn:hover {
+            background: rgba(212, 175, 55, 0.9);
+            color: #fff;
+            opacity: 1 !important;
+        }
+        /* Class untuk sembunyi */
+        .hide-ui .control-btn { opacity: 0; pointer-events: none; }
+
+        .nav-btn {
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px;
+            font-size: 3rem;
+            border-radius: 10px;
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+        .fullscreen-btn {
+            bottom: 20px; right: 20px; width: 50px; height: 50px;
+            font-size: 1.5rem; border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="control-btn nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="control-btn nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+    <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()" title="Layar Penuh">&#x26F6;</button>
+
+    <iframe id="main-screen" src="slide1.html"></iframe>
+
+    <script>
+        const screen = document.getElementById('main-screen');
+        
+        // --- 1. LOGIKA SKALA OTOMATIS (Sihir Utamanya Disini) ---
+        function resizeScreen() {
+            const slideWidth = 1280; // Lebar desain asli
+            const slideHeight = 720; // Tinggi desain asli
+            
+            // Ukuran jendela browser saat ini
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Hitung persentase Zoom yang pas (agar tidak kepotong)
+            const scale = Math.min(
+                windowWidth / slideWidth, 
+                windowHeight / slideHeight
+            );
+
+            // Terapkan Zoom ke Iframe
+            // translate(-50%, -50%) menjaga agar tetap di tengah layar
+            screen.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        }
+
+        // Jalankan saat loading & saat layar diubah ukurannya
+        window.addEventListener('load', resizeScreen);
+        window.addEventListener('resize', resizeScreen);
+
+
+        // --- 2. LOGIKA PINDAH SLIDE & MOUSE ---
+        const slides = [
+            "slide1.html", "slide2.html", "slide3.html", "slide4.html", "slide5.html", 
+            "slide6.html", "slide7.html", "slide8.html", "slide9.html", "slide10.html"
+        ];
+        let currentIndex = 0;
+        let inactivityTimer;
+
+        // Auto Hide UI Logic
+        function showUI() {
+            document.body.classList.remove('hide-ui');
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                document.body.classList.add('hide-ui');
+            }, 3000);
+        }
+
+        // Event Listener Dasar
+        window.addEventListener('mousemove', showUI);
+        window.addEventListener('keydown', showUI);
+        showUI();
+
+        // Iframe Logic (Jembatan Mouse)
+        screen.onload = function() {
+            screen.style.opacity = 1;
+            try {
+                const innerDoc = screen.contentDocument || screen.contentWindow.document;
+                innerDoc.addEventListener('mousemove', showUI);
+                innerDoc.addEventListener('click', showUI);
+                innerDoc.addEventListener('keydown', (e) => {
+                    showUI();
+                    if (e.key === "ArrowRight") moveSlide(1);
+                    if (e.key === "ArrowLeft") moveSlide(-1);
+                });
+            } catch (e) { /* Abaikan jika cross-origin lokal */ }
+        };
+
+        function moveSlide(direction) {
+            const nextIndex = currentIndex + direction;
+            if (nextIndex >= 0 && nextIndex < slides.length) {
+                screen.style.opacity = 0;
+                setTimeout(() => {
+                    currentIndex = nextIndex;
+                    screen.src = slides[currentIndex];
+                }, 400);
+            }
+        }
+
+        // Keyboard Nav
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") moveSlide(1);
+            if (e.key === "ArrowLeft") moveSlide(-1);
+        });
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>

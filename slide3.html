@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Question &amp; Objective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Source+Sans+Pro:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: url('images/bg7.jpg') center center/cover no-repeat;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 30, 20, 0.7);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 60px 70px;
+            z-index: 2;
+        }
+        .left-container, .right-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(212,175,55,1) 0%, rgba(212,175,55,0) 100%);
+        }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="overlay">
+            <div class="content">
+                <div class="left-container">
+                    <h1 class="title">Research Question &amp; Objective</h1>
+                    
+                    <div class="glass-box">
+                        <div class="section-title">
+                            <i class="material-icons section-icon">help_outline</i>
+                            Research Question
+                        </div>
+                        <div class="section-content">
+                            Is there any <span class="highlight">significant improvement</span> in the report writing ability of junior high school students after using <span class="highlight">flashcards</span> as a learning medium?
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-container">
+                    <div class="glass-box">
+                        <div class="section-title">
+                            <i class="material-icons section-icon">track_changes</i>
+                            Research&nbsp; Objective
+                        </div>
+                        <div class="section-content">
+                            To determine how far <span class="highlight">flashcards</span> improve junior high school students' <span class="highlight">report writing ability</span>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body></html>

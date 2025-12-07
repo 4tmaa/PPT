@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: url('images/bg2.jpg') center center/cover no-repeat;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 30, 20, 0.7);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 60px 70px;
+            z-index: 2;
+        }
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(212,175,55,1) 0%, rgba(212,175,55,0) 100%);
+        }
+        .conclusion-container {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        .conclusion-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1pxpx solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            max-width: 80%;
+            position: relative;
+            overflow: hidden;
+        }
+        .conclusion-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,1) 50%, rgba(212,175,55,0) 100%);
+        }
+        .conclusion-icon {
+            font-size: 60px;
+            color: #D4AF37;
+            margin-bottom: 30px;
+        }
+        .conclusion-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+        .supporting-points {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+        }
+        .point-icon {
+            font-size: 36px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+        .point-text {
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="overlay">
+            <div class="content">
+                <h1 class="title">Conclusion</h1>
+                
+                <div class="conclusion-container">
+                    <div class="conclusion-box">
+                        <i class="material-icons conclusion-icon">stars</i>
+                        <div class="conclusion-text">
+                            Flashcards have a <span class="highlight">significant effect</span> on improving report writing skills
+                        </div>
+                        
+                        <div class="supporting-points">
+                            <div class="point">
+                                <i class="material-icons point-icon">psychology</i>
+                                <div class="point-text">
+                                    Enhanced Vocabulary
+                                </div>
+                            </div>
+                            
+                            <div class="point">
+                                <i class="material-icons point-icon">view_quilt</i>
+                                <div class="point-text">
+                                    Better Organization
+                                </div>
+                            </div>
+                            
+                            <div class="point">
+                                <i class="material-icons point-icon">subject</i>
+                                <div class="point-text">
+                                    Improved Content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
